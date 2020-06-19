@@ -1,0 +1,23 @@
+.choice-container{
+    text-align: -webkit-left;
+}
+
+.choice-container img {
+    float: left;
+    margin: 12px 0px 0 0px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+button.selected.s.bubble{
+    color: white;
+    background: #6c5ce7;
+}
+.s.bubble{
+    color: white;
+    background: #6c5ce7;
+}
+.s.bubble:hover{
+    box-shadow: 0px 0px 15px 0px #6c5ce7b0;
+}

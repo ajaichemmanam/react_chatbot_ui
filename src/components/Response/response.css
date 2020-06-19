@@ -1,0 +1,42 @@
+.response-container {
+  text-align: -webkit-left;
+}
+
+.avatar {
+    float: left;
+    margin: -10px 10px 0 -15px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+  .timestamp {
+    color: #ccc5c5;
+    font-size: 8pt;
+  }
+
+  
+.response-bubble {
+  padding: 1em;
+  color: whitesmoke;
+  margin: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: none;
+  border-radius: 2em;
+  background: #a29bfe;
+  font-size: 12pt;
+  text-align: -webkit-left;
+  margin: 10px 10px 5px 5px;
+}
+/* button.selected.s.bubble{
+    color: white;
+    background: #6c5ce7;
+}
+.s.bubble{
+    color: white;
+    background: #a29bfe;
+} */
+/* .s.bubble:hover{
+    box-shadow: 0px 0px 15px 0px #6c5ce7b0;
+} */

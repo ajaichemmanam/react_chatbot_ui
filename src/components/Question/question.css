@@ -1,0 +1,16 @@
+.question-container {
+  text-align: -webkit-right;
+}
+
+.question-container img {
+  float: right;
+  margin: -10px -15px 0 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.timestamp {
+  color: #ccc5c5;
+  font-size: 8pt;
+}

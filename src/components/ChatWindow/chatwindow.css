@@ -1,0 +1,96 @@
+.chatwindow {
+  position: fixed;
+  background: white;
+  width: 450px;
+  height: 600px;
+  position: fixed;
+  border-radius: 15px;
+  right: 50px;
+  bottom: 75px;
+  /* display: grid;
+    margin: 0 auto;
+    padding: 10px; */
+  /* overflow-y: scroll;
+    height: 600px; */
+}
+
+.textinput {
+  color: #6c5ce7;
+  width: 410px;
+  border: none;
+  border-radius: 2em;
+  background: whitesmoke;
+  font-size: 12pt;
+  padding: 1em;
+  /* margin-top: 1em; */
+  /* position: fixed;
+  bottom: 5%;
+  right: 6%; */
+}
+
+.textinput:focus {
+  outline: none;
+}
+
+.enterbutton {
+  background-color: transparent;
+  background-position: center;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  background-size: 100%;
+  /* position: fixed;
+  right: 40px;
+  bottom: 75px; */
+}
+
+.entericon {
+  height: 35px;
+  width: 35px;
+  border-radius: 2em;
+}
+
+.convform {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.chatHeader {
+  height: 30px;
+  font-size: 15pt;
+  border-radius: 10px;
+  background: #6b5de7;
+  color: whitesmoke;
+}
+
+.typewriter {
+  text-align: -webkit-left;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid #6c5ce7; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  /* margin: 0 auto;  */
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(60, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 25%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #6c5ce7;
+  }
+}

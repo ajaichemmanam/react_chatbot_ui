@@ -1,0 +1,51 @@
+[
+  {
+    "question": "Are you into design?",
+    "responses": ["OMG yes!", "Nah, not really."],
+    "customResponse": "Same! I actually love protyping on Figma! Let me know what you think about some of my designs.",
+    "link": "https://www.figma.com/@nivaaz",
+    "icon": "figma"
+  },
+  {
+    "question": "Are you into programming? Maybe websites too?",
+    "responses": ["Yes, I do!", "No, not really."],
+    "customResponse": "Awsome! I'm actually a self taught software engineer - my projects can be found here.",
+    "link": "https://github.com/nivaaz",
+    "icon": "github"
+  },
+  {
+    "question": "Have you every played with Codepen?",
+    "responses": ["I dabble occasionally", "No..."],
+    "customResponse": "I do sometimes as well, here's a link to some of my creations!",
+    "link": "https://codepen.io/nivaaaaaz",
+    "icon": "codepen"
+  },
+  {
+    "question": "Okay well are you into reading/ writing? I write articles regularly on Medium.",
+    "responses": ["That's so cool, show me your work!", "Not my jam."],
+    "customResponse": "I write about my experiences and failures. You should let me know what you think!",
+    "link": "https://www.medium.com/@nivaaz",
+    "icon": "medium"
+  },
+  {
+    "question": "Are you into makeup or maybe you have a cool creative flare?",
+    "responses": ["YASSS, I love a snatched look.", "Not really my taste."],
+    "customResponse": "I love it, I actually have an instagram account where I post makeup looks! You should give it a follow!",
+    "link": "https://www.instagram.com/zaaaaavin",
+    "icon": "instagram"
+  },
+  {
+    "question": "Okay, you like dogs right?",
+    "responses": ["SHOW ME THE DOGGOS!", "I'm actually a cat person"],
+    "customResponse": "You have to check out my puppy's instagram, his name is Rubi",
+    "link": "https://www.instagram.com/rubii.singh/",
+    "icon": "instagram"
+  },
+  {
+    "question": "Well, I suppose you can check out my Linkedin?",
+    "responses": ["Sure"],
+    "customResponse": "Well here is a link to my Linkedin, enjoy! Send me an inmail if you find my profile interesting!",
+    "link": "https://www.linkedin.com/in/nsehmbhi/",
+    "icon": "Linkedin"
+  }
+]
