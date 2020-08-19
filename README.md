@@ -17,6 +17,7 @@ Backend: https://github.com/ajaichemmanam/rasachatbot
 ## Features
 
 - Text Messages
+- Text to Speech Capability
 - Timestamps
 - Bot Typing Indicator
 - Smart Message Delay
