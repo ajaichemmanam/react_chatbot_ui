@@ -5,12 +5,29 @@ import imageSrc from "../../assets/enter.jpg";
 
 import { serviceApi } from "../../data/api.js";
 var moment = require("moment");
-export class ChatWindow extends React.Component {
+
+// Generate a UUID
+function CreateUUID() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+class ChatWindow extends React.Component {
   state = {
+    uuid: "",
     inputText: "",
     convers: [],
     showTyping: false,
   };
+
+  componentDidMount() {
+    var uuid = CreateUUID();
+    // console.log("userid", uuid);
+    this.setState({ uuid: uuid });
+  }
 
   onChoiceResponse = (e) => {
     let con = this.state.convers;
@@ -19,10 +36,12 @@ export class ChatWindow extends React.Component {
       if (con[i]["choices"]) {
         let choicelist = con[i]["choices"];
         con.splice(i, 1);
-        con.push({ question: choicelist[e.target.value] });
+        var chosedValue = choicelist[e.target.value];
+        // con.push({ question: chosedValue});
       }
     }
     this.setState({ convers: con });
+    this.sendMessage(chosedValue);
   };
 
   respond = (resp) => {
@@ -74,17 +93,129 @@ export class ChatWindow extends React.Component {
     this.setState({ inputText: "", convers: con });
   };
 
-  onHandleSubmit = (e) => {
-    e.preventDefault();
-    this.checkActivePrompt();
+  addMessage = (message) => {
     let con = this.state.convers;
-    let query = this.state.inputText;
+    if (message.recipient_id.toString() === this.state.uuid) {
+      if (message.text) {
+        con.push({
+          response: message.text,
+          timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+        });
+      }
+      if (message.image) {
+        con.push({
+          imageUrl: message.image,
+          timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+        });
+      }
+
+      // Support custom messages
+      if (message.custom) {
+        message.custom.forEach((customMessage) => {
+          // audio
+          if (customMessage.audio) {
+            con.push({
+              response: customMessage.description,
+              audioUrl: customMessage.audio,
+              timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            });
+          }
+
+          // video
+          if (customMessage.video) {
+            con.push({
+              response: customMessage.description,
+              videoUrl: customMessage.video.replace(
+                "https://www.youtube.com/watch?v=",
+                "https://www.youtube.com/embed/"
+              ),
+              timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            });
+          }
+
+          // document
+          if(customMessage.document){
+            con.push({
+              response: customMessage.description,
+              pdfUrl: customMessage.document,
+              timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            });
+          }
+          // image
+          if (customMessage.image) {
+            con.push({
+              response: customMessage.description,
+              imageUrl: customMessage.image,
+              timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            });
+          }
+        });
+      }
+
+      if (message.buttons) {
+        var buttons = [];
+        message.buttons.forEach((button) => {
+          buttons.push(button.title);
+        });
+        con.push({
+          choices: buttons,
+          choiceCallback: this.onChoiceResponse,
+          isSelected: null,
+          timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
+        });
+      }
+    }
+    this.setState({ convers: con });
+  };
+
+  sendMessage = (query) => {
+    let con = this.state.convers;
     con.push({
       question: query,
       timestamp: moment().format("MMMM Do YYYY, h:mm:ss a"),
     });
     this.setState({ inputText: "", convers: con });
+    serviceApi
+      .sendMessage({
+        sender: this.state.uuid,
+        message: query,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ showTyping: false });
+          var promise = Promise.resolve();
+          res.data.forEach((message, idx) => {
+            promise = promise.then(
+              function () {
+                this.setState({ showTyping: true });
+                this.addMessage(message);
+                if (idx === res.data.length - 1) {
+                  this.setState({ showTyping: false });
+                }
+                return new Promise(function (resolve) {
+                  setTimeout(
+                    resolve,
+                    message.text
+                      ? message.text.length < 20
+                        ? message.text.length * 100
+                        : 2000
+                      : 1000
+                  );
+                });
+              }.bind(this)
+            );
+            // Verify recipient id
+          });
+          // console.log(res.data);
+        }
+      });
+  };
 
+  onHandleSubmit = (e) => {
+    e.preventDefault();
+    this.checkActivePrompt();
+
+    let query = this.state.inputText;
     // var id = 0;
     // setInterval(
     //   function (self) {
@@ -96,15 +227,7 @@ export class ChatWindow extends React.Component {
     //   this
     // );
     this.setState({ showTyping: true });
-    serviceApi.sendMessage({ text: query }).then((res) => {
-      if (res.status === 200) {
-        if (res.data.confidence > 0.5) {
-          this.respond(res.data.answer);
-        }
-        console.log(res.data);
-      }
-      this.setState({ showTyping: false });
-    });
+    this.sendMessage(query);
   };
 
   render() {
@@ -114,10 +237,10 @@ export class ChatWindow extends React.Component {
         <Conversation convs={this.state.convers} />
         {this.state.showTyping ? (
           <div className="bubble typewriter" style={{ fontSize: "10pt" }}>
-            Bot Typing...
+            Typing...
           </div>
         ) : (
-          <div  style={{height: "58px"}}></div>
+          <div style={{ height: "58px" }}></div>
         )}
         <div>
           <form className="convform" onSubmit={this.onHandleSubmit}>
@@ -136,3 +259,5 @@ export class ChatWindow extends React.Component {
     );
   }
 }
+
+export default ChatWindow;

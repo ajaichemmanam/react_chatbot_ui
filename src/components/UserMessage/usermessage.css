@@ -1,8 +1,8 @@
-.question-container {
+.usermessage-container {
   text-align: -webkit-right;
 }
 
-.question-container img {
+.usermessage-container img {
   float: right;
   margin: -10px -15px 0 10px;
   height: 40px;

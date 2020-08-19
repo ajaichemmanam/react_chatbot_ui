@@ -1,8 +1,8 @@
-.choice-container{
+.buttons-container{
     text-align: -webkit-left;
 }
 
-.choice-container img {
+.buttons-container img {
     float: left;
     margin: 12px 0px 0 0px;
     height: 40px;

@@ -1,4 +1,4 @@
-.response-container {
+.botmessage-container {
   text-align: -webkit-left;
 }
 
@@ -16,7 +16,7 @@
   }
 
   
-.response-bubble {
+.botmessage-bubble {
   padding: 1em;
   color: whitesmoke;
   margin: none;

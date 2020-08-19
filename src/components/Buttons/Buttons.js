@@ -1,7 +1,7 @@
 import React from "react";
-import "./choices.css";
+import "./buttons.css";
 // import imageSrc from "../../assets/enter.png";
-export const Choices = (props) => {
+export const Buttons = (props) => {
   const renderBubble = (_value, _name, _key, isSelected) => {
     return (
       <button
@@ -19,7 +19,7 @@ export const Choices = (props) => {
   const resp = props.choices.map((key, index) => {
     return renderBubble(index, props.questionIndex, key, props.isSelected);
   });
-  return <div className="choice-container"> {resp} 
+  return <div className="buttons-container"> {resp} 
    {/* <img src={imageSrc} alt="User" width="20" height="20"></img> */}
   </div>;
 };

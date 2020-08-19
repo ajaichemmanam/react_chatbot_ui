@@ -1,7 +1,7 @@
 import React from "react";
-import { Question } from "../Question/Question";
-import { Choices } from "../Choices/Choices";
-import { Response } from "../Response/Response";
+import { UserMessage } from "../UserMessage/UserMessage";
+import { Buttons } from "../Buttons/Buttons";
+import { BotMessage } from "../BotMessage/BotMessage";
 
 import "./conversation.css";
 
@@ -35,16 +35,17 @@ export class Conversation extends React.Component {
       return (
         <div key={index}>
           {key.question ? (
-            <Question question={key.question} timestamp={key.timestamp} />
+            <UserMessage question={key.question} timestamp={key.timestamp} />
           ) : key.response ? (
-            <Response
+            <BotMessage
               response={key.response}
               videoUrl={key.videoUrl ? key.videoUrl : null}
               imageUrl={key.imageUrl ? key.imageUrl : null}
+              pdfUrl={key.pdfUrl ? key.pdfUrl : null}
               timestamp={key.timestamp}
             />
           ) : (
-            <Choices
+            <Buttons
               choices={key.choices}
               isSelected={key.isSelected ? true : false}
               handleChoiceClick={key.choiceCallback}

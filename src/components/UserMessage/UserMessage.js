@@ -1,13 +1,15 @@
 import React from "react";
-import "./question.css";
+import "./usermessage.css";
 import imageSrc from "../../assets/user_avatar.png";
-export const Question = (props) => {
+export const UserMessage = (props) => {
   return (
-    <div className="question-container">
-      <p className="bubble" key={props.timestamp}>
+    <div className="usermessage-container">
+      <div className="bubble" key={props.timestamp}>
+      <div style={{margin: '0px 25px 0px 25px'}}>
         {props.question}{" "}
+        </div>
         <img src={imageSrc} alt="User" width="20" height="20"></img>
-      </p>
+      </div>
       <div className="timestamp">{props.timestamp}</div>
     </div>
   );

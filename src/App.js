@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { ChatWindow } from "./components/ChatWindow/ChatWindow";
+import ChatWindow from "./components/ChatWindow/ChatWindow";
 const dotenv = require("dotenv");
 dotenv.config();
 
