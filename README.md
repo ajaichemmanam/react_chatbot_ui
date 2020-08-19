@@ -18,6 +18,9 @@ Backend: https://github.com/ajaichemmanam/rasachatbot
 
 - Text Messages
 - Timestamps
-- Videos support
-- Images support
-- Audio support
+- Bot Typing Indicator
+- Smart Message Delay
+- Supports Videos
+- Supports Images
+- Supports Audio
+- Supports PDF Document 
