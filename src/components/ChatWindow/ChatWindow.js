@@ -4,6 +4,7 @@ import "./chatwindow.css";
 import imageSrc from "../../assets/enter.jpg";
 
 import { serviceApi } from "../../data/api.js";
+
 var moment = require("moment");
 
 // Generate a UUID
@@ -134,7 +135,7 @@ class ChatWindow extends React.Component {
           }
 
           // document
-          if(customMessage.document){
+          if (customMessage.document) {
             con.push({
               response: customMessage.description,
               pdfUrl: customMessage.document,
@@ -236,12 +237,18 @@ class ChatWindow extends React.Component {
         <div className="chatHeader">Test Bot</div>
         <Conversation convs={this.state.convers} />
         {this.state.showTyping ? (
-          <div className="bubble typewriter" style={{ fontSize: "10pt" }}>
-            Typing...
-          </div>
+          // <div className="botTyping typewriter" style={{ fontSize: "10pt" }}>
+          //   Typing...
+          // </div>
+          <div class="botTyping">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+            </div>
         ) : (
           <div style={{ height: "58px" }}></div>
         )}
+
         <div>
           <form className="convform" onSubmit={this.onHandleSubmit}>
             <input

@@ -63,6 +63,37 @@
   color: whitesmoke;
 }
 
+
+.botTyping {
+  padding: 1em;
+  color: #6c5ce7;
+  margin: none;
+  width: fit-content;
+  border: none;
+  border-radius: 2em;
+  background: whitesmoke;
+  font-size: 12pt;
+  text-align: -webkit-left;
+  margin: 10px 10px 5px 5px;
+}
+
+/* Another Message Style */
+/* .botTyping {
+  float: left;
+  margin-top: 5px;
+  background: white;
+  color: #6b5de7;
+  box-shadow: 2px 3px 9px 0px #6c5ce7;
+  margin-left: 0.5em;
+  padding: 15px;
+  border-radius: 0 20px 20px 20px;
+  max-width: 60%;
+  min-width: 20%;
+  word-wrap: break-word;
+  border-radius: 0 20px 20px 20px;
+} */
+
+/* css for  botTyping typewriter effect*/
 .typewriter {
   text-align: -webkit-left;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -92,5 +123,54 @@
   }
   50% {
     border-color: #6c5ce7;
+  }
+}
+
+/* css for botTyping bouncing effect*/
+
+
+
+.botTyping>div {
+  width: 10px;
+  height: 10px;
+  background-color: #6b5de7;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  margin-right: 5px;
+}
+
+.botTyping .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.botTyping .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+      -webkit-transform: scale(0)
+  }
+  40% {
+      -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+  }
+  40% {
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
   }
 }
