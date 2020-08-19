@@ -18,6 +18,7 @@ Backend: https://github.com/ajaichemmanam/rasachatbot
 
 - Text Messages
 - Text to Speech Capability
+- Custom Welcome Message
 - Timestamps
 - Bot Typing Indicator
 - Smart Message Delay
@@ -25,3 +26,5 @@ Backend: https://github.com/ajaichemmanam/rasachatbot
 - Supports Images
 - Supports Audio
 - Supports PDF Document 
+
+Feature Requests are Welcome
